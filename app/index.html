@@ -1,24 +1,39 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>ArticlesApp</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Posts</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {{content-for "head"}}
+  {{content-for "head"}}
 
-    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css">
-    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/articles-app.css">
+  <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css">
+  <link integrity="" rel="stylesheet" href="{{rootURL}}assets/articles-app.css">
 
-    {{content-for "head-footer"}}
-  </head>
-  <body>
-    {{content-for "body"}}
+  <script>
+    if (window.location.search.indexOf('deterministic') >= 0) {
+      let style = document.createElement('style');
 
-    <script src="{{rootURL}}assets/vendor.js"></script>
-    <script src="{{rootURL}}assets/articles-app.js"></script>
+      style.appendChild(document.createTextNode(`
+          *, *::before, *::after {
+            transition-delay: 0s !important;
+            transition-duration: 0s !important;
+          }
+        `));
 
-    {{content-for "body-footer"}}
-  </body>
+      document.head.appendChild(style);
+    }
+  </script>
+
+  {{content-for "head-footer"}}
+</head>
+<body>
+{{content-for "body"}}
+
+<script src="{{rootURL}}assets/vendor.js"></script>
+<script src="{{rootURL}}assets/articles-app.js"></script>
+
+{{content-for "body-footer"}}
+</body>
 </html>

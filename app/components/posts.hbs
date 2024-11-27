@@ -1,0 +1,34 @@
+<div class="posts mb-4 dark:bg-gray-800 bg-white">
+  <input type="text" name="post-search-term" placeholder="Поиск..."
+         class="p-2 h-11 border rounded"
+    {{on "input" this.updateQuery}}
+  />
+  <select class="p-2 h-11 border rounded" {{on "change" this.updateCategory}}>
+    <option value="">Все категории</option>
+    <option value="Технологии">Технологии</option>
+    <option value="Наука">Наука</option>
+  </select>
+  <select class="p-2 h-11 border rounded" {{on "change" this.updateAuthor}}>
+    <option value="">Все авторы</option>
+    <option value="Иван Иванов">Иван Иванов</option>
+    <option value="Сергей Петров">Сергей Петров</option>
+  </select>
+
+  <input type="date" name="post-search-date" placeholder="Дата..."
+         class="p-2  h-11 border rounded"
+    {{on "input" this.updateDate}}
+  />
+</div>
+
+<div class="results grid sm:grid-cols-2 lg:grid-cols-3 gap-5 row-gap-12
+              sm:row-gap-16 bg-white dark:bg-gray-800">
+  <Posts::Filter @posts={{@posts}}
+                 @query={{this.query}}
+                 @category={{this.category}}
+                 @author={{this.author}}
+                 @date={{this.date}} as |results|>
+    {{#each results as |post|}}
+      <Post @post={{post}} />
+    {{/each}}
+  </Posts::Filter>
+</div>

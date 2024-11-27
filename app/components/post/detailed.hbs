@@ -1,0 +1,37 @@
+<article class="article">
+  <div class="detailed text-gray-900 dark:text-white relative">
+    <h1 class="title text-4xl sm:text-5xl leading-10 sm:leading-14 font-bold mb-8 sm:text-center">
+      {{@post.title}}
+    </h1>
+
+    <div class="info text-lg font-medium sm:text-center mb-10">
+      Опубликовано: {{format-date @post.publishedAt}} , {{@post.author}}
+    </div>
+
+    <div class="content max-w-screen-md mx-auto">
+      <div class="leading-8 space-y-4 mb-8">
+        {{@post.content}}
+      </div>
+    </div>
+
+    <div class="actions flex justify-between">
+      <LinkTo @route="index" class="back font-medium hover:text-gray-700">
+        &larr; Back to Posts
+      </LinkTo>
+      <button
+        type="button"
+        class="share px-4 font-medium rounded
+        hover:text-gray-700 transition"
+        {{on "click" this.copyLink}}>
+        Скопировать ссылку
+      </button>
+      {{#if this.showNotification}}
+        <div class="absolute top-2 right-0 mt-4 mr-4 p-2 bg-green-500 text-white rounded shadow">
+          Ссылка скопирована!
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</article>
+
+
