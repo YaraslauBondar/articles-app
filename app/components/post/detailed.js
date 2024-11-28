@@ -9,14 +9,16 @@ export default class DetailedComponent extends Component {
   copyLink() {
     const articleUrl = window.location.href;
 
-    navigator.clipboard.writeText(articleUrl).then(() => {
-      this.showNotification = true;
-
-      setTimeout(() => {
-        this.showNotification = false;
-      }, 3000);
-    }).catch((err) => {
-      console.error('Ошибка копирования ссылки:', err);
-    });
+    navigator.clipboard
+      .writeText(articleUrl)
+      .then(() => {
+        this.showNotification = true;
+        setTimeout(() => {
+          this.showNotification = false;
+        }, 3000);
+      })
+      .catch((err) => {
+        console.error('Ошибка копирования ссылки:', err);
+      });
   }
 }

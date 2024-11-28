@@ -10,31 +10,31 @@ module('Integration | Component | posts', function (hooks) {
     this.setProperties({
       posts: [
         {
-          id: "1",
-          type: "post",
-          title: "Как использовать Ember.js для веб-разработки",
-          content: "Ember.js — это мощный инструмент для создания современных веб-приложений ывап ывап ывапр цукенекукенекуке пав кеаукепаукепа укепаукепакукепр глоголонго ерпкепрпкеп укапаукаувавцывчы",
-          category: "Технологии",
-          author: "Иван Иванов",
-          publishedAt: "2024-01-10"
+          id: '1',
+          type: 'post',
+          title: 'test title 1',
+          content: 'test content 1',
+          category: 'test category 1',
+          author: 'test author 1',
+          publishedAt: '2024-01-10',
         },
         {
-          id: "2",
-          type: "post",
-          title: "Преимущества Tailwind CSS",
-          content: "Tailwind CSS позволяет быстро создавать стилизованные интерфейсы ывап ывап ывапр цукенекукенекуке пав кеаукепаукепа укепаукепакукепр глоголонго ерпкепрпкеп укапаукаувавцывчы",
-          category: "Технологии",
-          author: "Анна Смирнова",
-          publishedAt: "2024-02-15"
+          id: '2',
+          type: 'post',
+          title: 'test title 2',
+          content: 'test content 2',
+          category: 'test category 2',
+          author: 'test author 2',
+          publishedAt: '2024-01-10',
         },
         {
-          id: "3",
-          type: "post",
-          title: "Последние достижения в области искусственного интеллекта",
-          content: "Искусственный интеллект активно развивается, предлагая новые возможности  ывап ывап ывапр цукенекукенекуке пав кеаукепаукепа укепаукепакукепр глоголонго ерпкепрпкеп укапаукаувавцывчы",
-          category: "Наука",
-          author: "Сергей Петров",
-          publishedAt: "2024-03-20"
+          id: '3',
+          type: 'post',
+          title: 'test title 3',
+          content: 'test content 3',
+          category: 'test category 3',
+          author: 'test author 3',
+          publishedAt: '2024-01-10',
         },
       ],
     });
@@ -49,17 +49,9 @@ module('Integration | Component | posts', function (hooks) {
     assert.dom('.results').exists();
     assert.dom('.results .post').exists({ count: 3 });
 
-    assert
-      .dom('.results .post:nth-of-type(1)')
-      .containsText('Как использовать Ember.js для веб-разработки');
-
-    assert
-      .dom('.results .post:nth-of-type(2)')
-      .containsText('Преимущества Tailwind CSS');
-
-    assert
-      .dom('.results .post:nth-of-type(3)')
-      .containsText('Последние достижения в области искусственного интеллекта');
+    assert.dom('.results .post:nth-of-type(1)').containsText('test title 1');
+    assert.dom('.results .post:nth-of-type(2)').containsText('test title 2');
+    assert.dom('.results .post:nth-of-type(3)').containsText('test title 3');
   });
 
   test('it updates the results according to the search query', async function (assert) {
@@ -68,10 +60,10 @@ module('Integration | Component | posts', function (hooks) {
     assert.dom('.posts').exists();
     assert.dom('.posts input').exists();
 
-    await fillIn('.posts input', 'Как');
+    await fillIn('.posts input', '1');
 
     assert.dom('.results').exists();
     assert.dom('.results .post').exists({ count: 1 });
-    assert.dom('.results .post').containsText('Как использовать Ember.js для веб-разработки');
+    assert.dom('.results .post').containsText('test title 1');
   });
 });

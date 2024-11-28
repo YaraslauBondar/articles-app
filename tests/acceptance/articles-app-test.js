@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import { click, find, visit, currentURL } from '@ember/test-helpers';
+import { click, visit, currentURL } from '@ember/test-helpers';
 import { setupApplicationTest } from 'articles-app/tests/helpers';
 
 module('Acceptance | articles app', function (hooks) {
@@ -34,9 +34,11 @@ module('Acceptance | articles app', function (hooks) {
     assert.dom('.share').hasText('Скопировать ссылку');
 
     await click('.share');
-    navigator.clipboard.readText().then(
-      (clipText) => assert.strictEqual(clipText, `${window.location.origin}/posts/1`)
-    )
+    navigator.clipboard
+      .readText()
+      .then((clipText) =>
+        assert.strictEqual(clipText, `${window.location.origin}/posts/1`),
+      );
 
     await click('.back');
     assert.strictEqual(currentURL(), '/');

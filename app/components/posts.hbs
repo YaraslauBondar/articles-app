@@ -1,21 +1,24 @@
 <div class="posts mb-4 dark:bg-gray-800 bg-white">
-  <input type="text" name="post-search-term" placeholder="Поиск..."
+  <label for="search"></label>
+  <input id="search" type="text" name="post-search-term" placeholder="Поиск..."
          class="p-2 h-11 border rounded"
     {{on "input" this.updateQuery}}
   />
-  <select class="p-2 h-11 border rounded" {{on "change" this.updateCategory}}>
+  <label for="category"></label>
+  <select id="category" name="category-select" class="p-2 h-11 border rounded" {{on "change" this.updateCategory}}>
     <option value="">Все категории</option>
     <option value="Технологии">Технологии</option>
     <option value="Наука">Наука</option>
   </select>
-  <select class="p-2 h-11 border rounded" {{on "change" this.updateAuthor}}>
+  <label for="author"></label>
+  <select id="author" name="author-select" class="p-2 h-11 border rounded" {{on "change" this.updateAuthor}}>
     <option value="">Все авторы</option>
     <option value="Иван Иванов">Иван Иванов</option>
     <option value="Сергей Петров">Сергей Петров</option>
   </select>
-
-  <input type="date" name="post-search-date" placeholder="Дата..."
-         class="p-2  h-11 border rounded"
+  <label for="search-date"></label>
+  <input id="search-date" type="date" name="post-search-date" placeholder="Дата..."
+         class="p-2 h-11 border rounded"
     {{on "input" this.updateDate}}
   />
 </div>

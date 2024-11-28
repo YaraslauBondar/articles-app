@@ -9,13 +9,13 @@ module('Integration | Component | post/detailed', function (hooks) {
   hooks.beforeEach(function () {
     this.setProperties({
       post: {
-        id: "1",
-        type: "post",
-        title: "Как использовать Ember.js для веб-разработки",
-        content: "Ember.js — это мощный инструмент для создания современных веб-приложений ывап ывап ывапр цукенекукенекуке пав кеаукепаукепа укепаукепакукепр глоголонго ерпкепрпкеп укапаукаувавцывчы",
-        category: "Технологии",
-        author: "Иван Иванов",
-        publishedAt: "2024-01-10"
+        id: '1',
+        type: 'post',
+        title: 'test title',
+        content: 'test content',
+        category: 'test category',
+        author: 'test author',
+        publishedAt: '2024-01-10',
       },
     });
   });
@@ -24,9 +24,9 @@ module('Integration | Component | post/detailed', function (hooks) {
     await render(hbs`<Post::Detailed @post={{this.post}} />`);
 
     assert.dom('article').hasClass('article');
-    assert.dom('article .title').containsText('Как использовать Ember.js для веб-разработки');
-    assert.dom('article .info').containsText('Иван Иванов');
-    assert.dom('article .content').containsText('Ember.js');
+    assert.dom('article .title').containsText('test title');
+    assert.dom('article .info').containsText('test author');
+    assert.dom('article .content').containsText('test content');
     assert.dom('article .back').exists();
     assert.dom('article .share').exists();
   });

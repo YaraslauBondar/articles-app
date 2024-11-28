@@ -9,4 +9,3 @@ const browsers = [
 module.exports = {
   browsers,
 };
-
